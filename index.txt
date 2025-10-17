@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erik Stalin Pozo Duarte - Hoja de Vida Profesional</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 300px;
+            background: linear-gradient(135deg, #008080, #006666);
+            color: white;
+            padding: 30px 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            border: 4px solid rgba(255,255,255,0.3);
+            object-fit: cover;
+            display: block;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: #008080;
+        }
+
+        .name {
+            text-align: center;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: white;
+            line-height: 1.3;
+        }
+
+        .section-title {
+            background-color: #006666;
+            color: white;
+            padding: 12px 15px;
+            margin: 25px 0 15px 0;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-info, .external-links {
+            padding: 0 10px;
+        }
+
+        .contact-item, .link-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .contact-item:last-child, .link-item:last-child {
+            border-bottom: none;
+        }
+
+        .contact-item i, .link-item i {
+            width: 25px;
+            margin-right: 12px;
+            font-size: 16px;
+        }
+
+        .link-item a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .link-item a:hover {
+            color: #e0f7fa;
+            transform: translateX(5px);
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        .header {
+            background-color: #333;
+            color: white;
+            padding: 20px 30px;
+            margin: -30px -30px 30px -30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 500;
+        }
+
+        .bio-section {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+        }
+
+        .bio-section h2 {
+            color: #008080;
+            margin-bottom: 20px;
+            font-size: 22px;
+            border-bottom: 2px solid #008080;
+            padding-bottom: 10px;
+        }
+
+        .bio-content {
+            line-height: 1.8;
+        }
+
+        .bio-content p {
+            margin-bottom: 15px;
+        }
+
+        .interests-list {
+            margin-top: 20px;
+            padding-left: 20px;
+        }
+
+        .interests-list li {
+            margin-bottom: 8px;
+        }
+
+        /* Portfolio Section */
+        .portfolio-section {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+        }
+
+        .portfolio-section h2 {
+            color: #008080;
+            margin-bottom: 25px;
+            font-size: 22px;
+            border-bottom: 2px solid #008080;
+            padding-bottom: 10px;
+        }
+
+        .tabs {
+            display: flex;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .tab {
+            padding: 12px 20px;
+            cursor: pointer;
+            background: #f8f9fa;
+            border: 1px solid #eee;
+            border-bottom: none;
+            margin-right: 5px;
+            border-radius: 5px 5px 0 0;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .tab.active {
+            background: #008080;
+            color: white;
+            border-color: #008080;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .year-section {
+            margin-bottom: 25px;
+        }
+
+        .year-header {
+            background: #008080;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .projects-container {
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            background: #fafafa;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-left: 4px solid #008080;
+        }
+
+        .project-card h4 {
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .project-card p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                padding: 20px;
+            }
+
+            .main-content {
+                padding: 20px;
+            }
+
+            .header {
+                margin: -20px -20px 20px -20px;
+                padding: 15px 20px;
+            }
+
+            .tabs {
+                flex-wrap: wrap;
+            }
+
+            .tab {
+                margin-bottom: 5px;
+            }
+        }
+
+        .quote {
+            font-style: italic;
+            color: #666;
+            border-left: 3px solid #008080;
+            padding-left: 15px;
+            margin: 15px 0;
+        }
+
+        .section-divider {
+            height: 1px;
+            background: #eee;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="profile-photo">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="name">Erik Stalin<br>Pozo Duarte</div>
+
+            <div class="section-title">DATOS DE CONTACTO</div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>stalinpozo99d@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>0983615196</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Tulcán - Carchi</span>
+                </div>
+            </div>
+
+            <div class="section-title">LINKS EXTERNOS</div>
+            <div class="external-links">
+                <div class="link-item">
+                    <i class="fas fa-file-pdf"></i>
+                    <a href="https://drive.google.com/file/d/1wbXxKq59Lw2VNWattJSGuekX9390JBvE/view?usp=sharing" target="_blank">Hoja de Vida PDF</a>
+                </div>
+                <div class="link-item">
+                    <i class="fab fa-linkedin"></i>
+                    <a href="https://www.linkedin.com/in/erik-pozo-76183627b" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <h1>Hoja de Vida Profesional</h1>
+            </div>
+
+            <!-- Biografía Section -->
+            <div class="bio-section">
+                <h2>BIOGRAFÍA</h2>
+                <div class="bio-content">
+                    <p><strong>Técnico en Desarrollo de Software</strong> con enfoque en tecnologías web modernas y soluciones innovadoras. Especializado en crear aplicaciones eficientes y escalables que resuelven problemas reales del mundo empresarial.</p>
+                    
+                    <p>Con experiencia en el desarrollo full-stack, he trabajado en diversos proyectos que van desde aplicaciones web responsivas hasta sistemas complejos de gestión empresarial. Mi enfoque se centra en la calidad del código, la experiencia del usuario y la entrega continua de valor.</p>
+                    
+                    <div class="quote">
+                        "El éxito no es final, el fracaso no es fatal: lo que cuenta es el coraje para continuar."
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <p><strong>Intereses Profesionales:</strong></p>
+                    <ol class="interests-list">
+                        <li>Desarrollo Web Full-Stack</li>
+                        <li>Aplicaciones Móviles Híbridas</li>
+                        <li>Arquitectura de Software</li>
+                        <li>Bases de Datos y Optimización</li>
+                        <li>Inteligencia Artificial Aplicada</li>
+                        <li>Ciberseguridad Informática</li>
+                        <li>Automatización de Procesos</li>
+                        <li>Realidad Virtual y Aumentada</li>
+                        <li>Simulación Computacional</li>
+                        <li>Diseño Asistido por Computadora (CAD)</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Portfolio Section -->
+            <div class="portfolio-section">
+                <h2>PORTAFOLIO DE PROYECTOS</h2>
+                
+                <div class="tabs">
+                    <div class="tab active" onclick="showTab('consultoria')">PROYECTOS CONSULTORÍA</div>
+                    <div class="tab" onclick="showTab('investigacion')">PROYECTOS INVESTIGACIÓN</div>
+                    <div class="tab" onclick="showTab('cursos')">CURSOS</div>
+                    <div class="tab" onclick="showTab('colaboraciones')">COLABORACIONES</div>
+                </div>
+
+                <!-- Consultoría Tab -->
+                <div id="consultoria" class="tab-content active">
+                    <div class="year-section">
+                        <div class="year-header" onclick="toggleYear(this)">
+                            <span>2025</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="projects-container">
+                            <div class="project-card">
+                                <h4>Sistema de Gestión Empresarial Avanzado</h4>
+                                <p>Desarrollo de plataforma integral para gestión de recursos empresariales con inteligencia artificial integrada.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="year-section">
+                        <div class="year-header" onclick="toggleYear(this)">
+                            <span>2024</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="projects-container">
+                            <div class="project-card">
+                                <h4>Aplicación Móvil para Comercio Electrónico</h4>
+                                <p>Desarrollo de aplicación móvil multiplataforma para comercio electrónico local.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="year-section">
+                        <div class="year-header" onclick="toggleYear(this)">
+                            <span>2023</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="projects-container">
+                            <div class="project-card">
+                                <h4>Sistema de Gestión Comercial</h4>
+                                <p>Desarrollo de plataforma integral para gestión de ventas, inventario y clientes para pequeñas empresas.</p>
+                            </div>
+                            <div class="project-card">
+                                <h4>App Móvil para Servicios Locales</h4>
+                                <p>Aplicación móvil que conecta proveedores de servicios locales con clientes potenciales.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="year-section">
+                        <div class="year-header" onclick="toggleYear(this)">
+                            <span>2022</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="projects-container">
+                            <div class="project-card">
+                                <h4>Plataforma E-learning Personalizada</h4>
+                                <p>Implementación de sistema de educación virtual con herramientas de evaluación automatizada.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="year-section">
+                        <div class="year-header" onclick="toggleYear(this)">
+                            <span>2021</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="projects-container">
+                            <div class="project-card">
+                                <h4>Sistema de Monitoreo Empresarial</h4>
+                                <p>Desarrollo de solución para monitoreo en tiempo real de métricas clave de negocio.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="year-section">
+                        <div class="year-header" onclick="toggleYear(this)">
+                            <span>2020</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="projects-container">
+                            <div class="project-card">
+                                <h4>Portal de Gestión Documental</h4>
+                                <p>Implementación de sistema digital para almacenamiento y gestión de documentos empresariales.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Investigación Tab -->
+                <div id="investigacion" class="tab-content">
+                    <div class="year-section">
+                        <div class="year-header" onclick="toggleYear(this)">
+                            <span>2025</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="projects-container">
+                            <div class="project-card">
+                                <h4>Inteligencia Artificial para Análisis Predictivo</h4>
+                                <p>Investigación avanzada en algoritmos de machine learning para predicción de tendencias empresariales.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="year-section">
+                        <div class="year-header" onclick="toggleYear(this)">
+                            <span>2024</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="projects-container">
+                            <div class="project-card">
+                                <h4>Realidad Aumentada para Entrenamiento Profesional</h4>
+                                <p>Desarrollo de soluciones de RA para capacitación técnica en entornos industriales.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="year-section">
+                        <div class="year-header" onclick="toggleYear(this)">
+                            <span>2023</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="projects-container">
+                            <div class="project-card">
+                                <h4>Análisis de Datos para Toma de Decisiones</h4>
+                                <p>Investigación sobre técnicas de análisis predictivo para optimización de procesos empresariales.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="year-section">
+                        <div class="year-header" onclick="toggleYear(this)">
+                            <span>2022</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="projects-container">
+                            <div class="project-card">
+                                <h4>Optimización de Algoritmos de Búsqueda</h4>
+                                <p>Estudio y mejora de algoritmos para sistemas de búsqueda eficiente en grandes volúmenes de datos.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cursos Tab -->
+                <div id="cursos" class="tab-content">
+                    <div class="year-section">
+                        <div class="year-header" onclick="toggleYear(this)">
+                            <span>2025</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="projects-container">
+                            <div class="project-card">
+                                <h4>Curso de Especialización en Cloud Computing</h4>
+                                <p>Programa avanzado en arquitecturas cloud y servicios distribuidos.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="year-section">
+                        <div class="year-header" onclick="toggleYear(this)">
+                            <span>2024</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="projects-container">
+                            <div class="project-card">
+                                <h4>Curso de Seguridad Informática Avanzada</h4>
+                                <p>Capacitación en técnicas de protección de sistemas y datos sensibles.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="year-section">
+                        <div class="year-header" onclick="toggleYear(this)">
+                            <span>2023</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="projects-container">
+                            <div class="project-card">
+                                <h4>Curso Avanzado de Desarrollo Web</h4>
+                                <p>Programa de capacitación en tecnologías frontend modernas y frameworks JavaScript.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="year-section">
+                        <div class="year-header" onclick="toggleYear(this)">
+                            <span>2022</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="projects-container">
+                            <div class="project-card">
+                                <h4>Taller de Seguridad Informática</h4>
+                                <p>Capacitación práctica en buenas prácticas de seguridad para aplicaciones web.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Colaboraciones Tab -->
+                <div id="colaboraciones" class="tab-content">
+                    <div class="year-section">
+                        <div class="year-header" onclick="toggleYear(this)">
+                            <span>2025</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="projects-container">
+                            <div class="project-card">
+                                <h4>Colaboración con Universidad Tecnológica</h4>
+                                <p>Proyecto de investigación conjunto en tecnologías emergentes para la industria 4.0.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="year-section">
+                        <div class="year-header" onclick="toggleYear(this)">
+                            <span>2024</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="projects-container">
+                            <div class="project-card">
+                                <h4>Alianza con Centro de Innovación</h4>
+                                <p>Desarrollo de soluciones tecnológicas para emprendimientos locales.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="year-section">
+                        <div class="year-header" onclick="toggleYear(this)">
+                            <span>2023</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="projects-container">
+                            <div class="project-card">
+                                <h4>Colaboración con Startups Tecnológicas</h4>
+                                <p>Proyecto conjunto para desarrollo de MVP de aplicaciones innovadoras.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="year-section">
+                        <div class="year-header" onclick="toggleYear(this)">
+                            <span>2022</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="projects-container">
+                            <div class="project-card">
+                                <h4>Alianza con Instituciones Educativas</h4>
+                                <p>Co-desarrollo de herramientas educativas digitales para instituciones locales.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+            
+            // Close all year sections in the new tab
+            const yearContainers = document.querySelectorAll(`#${tabName} .projects-container`);
+            yearContainers.forEach(container => {
+                container.style.display = 'none';
+            });
+            
+            // Update icons
+            const yearHeaders = document.querySelectorAll(`#${tabName} .year-header`);
+            yearHeaders.forEach(header => {
+                const icon = header.querySelector('i');
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            });
+        }
+
+        function toggleYear(element) {
+            const container = element.nextElementSibling;
+            const icon = element.querySelector('i');
+            
+            if (container.style.display === 'none' || container.style.display === '') {
+                container.style.display = 'block';
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            } else {
+                container.style.display = 'none';
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            }
+        }
+
+        // Initialize year sections as collapsed
+        document.addEventListener('DOMContentLoaded', function() {
+            // Open the first year section by default in each tab
+            const firstYearHeaders = document.querySelectorAll('.tab-content.active .year-header');
+            firstYearHeaders.forEach(header => {
+                toggleYear(header);
+            });
+        });
+    </script>
+</body>
+</html>
