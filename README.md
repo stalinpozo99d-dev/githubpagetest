@@ -34,6 +34,11 @@
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
         }
 
+<img
+  class="profile-photo"
+  src="https://drive.google.com/uc?export=view&id=1HAn5rmohcbLfDpVCVrY2goAUgr3E1y37"
+  alt="Foto de tu perfil">
+
         .profile-photo {
             width: 150px;
             height: 150px;
